@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        input:focus:invalid{
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <h1>Sign Up</h1>
+        <form>
+            <div>
+                <label for="user_first_name">First Name</label>
+                <input type="text" name="user-first_name" id="user_first_name" required>
+            </div>
+            <div>
+                <label for="user_last_name">Last Name</label><br>
+                <input type="text" name="user-last_name" id="user_last_name">
+            </div>
+            <div>
+                <label for="user_email">Email</label><br>
+                <input type="email" name="user_email" id="user_email">
+            </div>
+            <div>
+                <label for="user_password">Password</label><br>
+                <input type="password" name="user_password" id="user_password" maxlength="7">
+            </div>
+            <div>
+                <label for="user_confirm_password">Confirm Password</label><br>
+                <input type="password" name="user_confirm_password" id="user_confirm_password">
+            </div>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+            <div>
+                <label for="rating">Rating</label> 
+                <input type="range" id="rating" list="ratings" name="rating" min="1" max="5">
+               <datalist id="ratings">
+                 <option value="1" lable="1"></option>
+                 <option value="2"></option>
+                 <option value="3"></option>
+                 <option value="4"></option>
+                 <option value="5"></option>
+               </datalist>
+             </div>
+             <button  type="submit">Submit Rating</button>
+           </form>
+    </main>
+    <footer>
+        <p>Copyright Little lemon</p>
+    </footer>
+</body>
+</html>

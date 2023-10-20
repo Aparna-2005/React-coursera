@@ -1,0 +1,379 @@
+CSS
+   cascading style sheet
+   internet browsers adopted CSS because it presented an opportunity for better visual designs and more creativity
+   the modern css development includes the introduction of responsive design in CSS and has further grown from there with layout options such as flex boxes, grids and boxes.
+   layouts help divide a page into different sections, thus making the page more presentable. 
+   CSS can be used to enhance a web page by modifying fonts, colors, layout, size and other style formatting options that make the web page more presentable.
+   The browser window that is visible to the user on the screen is called the view ports.
+   The main difference between the two is that flex box is one dimensional while grid as the word implies is two dimensional
+   Flex box is short for flexible box model
+   The flex box container applied over an element can flex to shrink or expand. 
+   grid  creates a two dimensional grid along both the row and column axes.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FLEX BOX
+     Flexbox does a better job of scaling over larger web pages and also provides more dynamic control of the containers
+     Flexbox is single-dimensional, which means you can align it either along a row or a column and it is set to row alignment by default.
+     There are two axes, the main and cross-axis, much like the x and y-axis used in coordinate geometry.
+     When aligned along the row, the horizontal axis is called the main axis and the vertical axis is called the cross axis
+     
+Alignment properties
+     justify-content. For item alignment on main axis.
+align-items. For item alignment on cross axis.
+align-self. For unique flex items on cross axis.
+align-content. Used for packing flex lines and control over space.
+align-self: This property can be used on individual items inside the flex. 
+
+
+CSS units of measurement
+
+1. Absolute units
+       Absolute units are constant across different devices and have a fixed size. 
+       absolute units are used when the size of the web page is known and will remain constant. 
+                                Quarter-millimeters
+
+                         1Q = 1/40th of 1cm
+                         mm(Millimeters) -> 1mm = 1/10th of 1cm
+                         cm(Centimeters) -> 1cm = 37.8px = 25.2/64in
+                         in(Inches) -> 1in = 2.54cm = 96px
+                         pc(Picas) -> 1pc = 1/6th of 1in
+                         pt(Points) -> 1pt = 1/72nd of 1in
+                         px(Pixels) -> 1px = 1/96th of 1in
+2. Relative values
+       Relative values are defined �in relation� to the other elements present inside the parent element.
+             em -> Font size of the parent where present.
+             ex -> x-co-ordinate or height of the font element.
+             ch -> Width of the font character.
+             rem -> Font size of the root element.
+             lh -> Value computed for line height of parent element. 
+             rlh -> Value computed for line height of root element which is <html>. 
+             vw -> 1% of the viewport width.
+             vh -> 1% of the viewport height.
+             vmin -> 1% of the smaller dimension of viewport.
+             vmax -> 1% of the larger dimension of viewport.
+             % -> Denotes a percentage value in relation to its parent element. 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ALL SELECTORS AND THEIR SPECIFICITY
+           Specificity is the ranking or score that helps CSS determine the final rule that will be applied to a given element. 
+
+Specificity hierarchy
+      CSS has a set of rules that it uses to �score� or assign a certain weight to selectors and this creates a specificity hierarchy.
+                 Inline styles 
+                 IDs 
+                 Classes, attributes, and pseudo-classes 
+                 Elements and pseudo-elements  
+
+Calculating scores
+       CSS uses the hierarchical model internally to calculate the specificity of the selectors used on a web page. 
+             Examples:
+                 p#bar => 1 element & 1 ID =>  0 1 0 1 => Score: 101
+                 p.foo => 1 element & 1 class => 0 0 1 1 => Score: 11
+                 p.p.foo => 1 element & 2 class =>  0 0 2 1 => Score: 21
+       there are a few more guidelines and rules that become important especially in cases when the score for the different selectors is the same.
+                  Every selector will have a score and place in the hierarchy
+                  In the case of selectors with equal specificity, the latest or last written rule is the one that will be applied
+                  In general, ID selector should be applied in cases where you need to be certain about a rule 
+                  Universal selectors have zero specificity value
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PSEUDO ELEMENTS( :: )
+     Syntax
+             selector::pseudo-element {
+                      property: value; }
+
+1. ::first-letter --> You can use first-letter to change the color of just the first letter
+2. ::first-line -->  First-line will change the complete first line
+3. ::selection -->  chnage style for particular content
+4. ::marker -->  Markers are typically used to add style elements to a list, for instance, to color bullet points. 
+5. ::before and ::after --> They allow you to add content before and after an element on which they are allowed.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS PSEDO 
+   
+Selector    |      Syntax    |      Eg
+____________|________________|_________________
+Element     |     element    |    div { }
+____________|________________|________________
+Class       |     .class     |   .alpha { }
+____________|________________|________________
+ID          |      #id       |   #alpha { }
+____________|________________|_________________
+Universal   |     *          | * { }
+____________|________________|________________
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Elements        |      Syntax                |      Eg           | Description
+________________|____________________________|___________________|_____________________
+Two classes     | .first-class.second-class  |  .alpha.beta {}   |All elements with classes alpha and beta
+________________|____________________________|___________________|_____________
+Element &       |                            |                   |
+ class          |    element.class           | p.alpha {}        |All alpha class elements inside <p
+________________|____________________________|___________________|_____________
+2 elements      |  element, element          |  p, div { }       |All <p> and <div> elements
+________________|____________________________|___________________|_______________
+2 elements      | element element            |p div { }          All <div> elements inside <p>
+________________|____________________________|___________________|__________________
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Descendant selectors/combinators
+
+Selector               Syntax                         Example             Description            
+
+Descendant           element element                  div p {}           All <p> descendants of <div>
+
+Child                element>element                  div > p {}         All <p> direct descendants of <div>
+
+Adjacent Sibling     element+element                  div + p {}         <p> element directly after <div>
+
+General Sibling      element~element                 div ~ p { }         All <p> element iterations after <div>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ATTRIBUTE SELECTOR
+
+Selector                          Syntax                       Example
+
+[attribute]                    [href] { }                   Selects all elements with a href attribute
+
+[attribute=value]              [lang="fr"] {}               Selects all elements with lang attribute that has a value of "fr"
+
+[attribute~=value]             [input~=hello] {}            Elements with input attribute containing the whitespace separated substring "hello"
+
+[attribute|=value]             [lang|=en] {}                Elements with lang attribute value equal to "en" or "en-"(en hyphen)
+
+[attribute^=value]             a[href^="https"] {}          Every <a> element with href attribute value begins with "https"
+
+[attribute$=value]             a[href$=".docx"] {}          Every <a> element with href attribute value ends with ".docx"
+
+[attribute*=value]             a[href*="meta"] {}           Every <a> element with href attribute value has substring "meta"
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Pseudo-class                    Example                       Description of selection
+
+:active                        a:active {}                    All active links 
+
+:checked                     input:checked {}                 All the checked <input> elements
+
+:default                     input:default {}                 All default <input> elements
+
+:disabled                    input:disabled {}                All disabled <input> elements
+
+:empty                       div:empty {}                     All the <div> elements with no children
+
+:enabled                     input:enabled {}                 All the enabled <input> elements
+
+:first-child                 p:first-child {}                 All the <p> elements who are the first child of a parent element
+
+:first-of-type               p:first-of-type {}               All the <p> element who are the first <p> element of a parent element
+
+:focus                       input:focus {}                   Input element under focus
+
+:fullscreen                  :fullscreen {}                   The element in full-screen mode
+
+:hover                       p:hover {}                       Action effect on mouse hover
+
+:invalid                     input:invalid {}                 Input elements with an invalid value
+
+:last-child                  p:last-child {}                 All the <p> elements who are the last child of a parent element
+
+:last-of-type                p:last-of-type {}               All the <p> elements who are the last <p> element of a parent element
+
+:link                        a:link {}                       All unvisited links
+
+:not(selector)              :not(div) {}                     All the elements that are not a <div> element
+
+:nth-child(n)               div:nth-child(3) {}              All the <p> elements that are the third child of a parent element
+
+:nth-last-child(n)          div:nth-last-child(3) {}         All the <div> elements which are the third child of a parent element, counting from last child element
+
+:nth-last-of-type(n)        p:nth-last-of-type(2) {}         The second sibling from the last child of a parent element.
+
+:nth-of-type(n)             p:nth-of-type(2) {}              The second sibling of a parent element.
+
+:only-of-type               p:only-of-type {}                All the <p> elements which are only <p> elements inside its parent
+
+:only-child                 p:only-child {}                  All the <p> elements which are only child of a parent element
+
+:optional                  input:optional {}                 The input elements with no "required" attribute
+
+:required                  input:required {}                 Selects input elements with the "required" attribute specified
+
+:root                      :root {}                          The Root element of document
+
+::selection                ::selection {}                     The portion of an element that is selected by a user
+
+:valid                     input:valid {}                    All the input elements with a valid value
+
+:visited                   a:visited {}                      Selects all visited links
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PSEUDO - ELEMENT SELECTORS
+
+Syntax                           Example                                Description
+
+::after                        p::after {}                            Inserts content after content of <p> element
+
+::before                       p::before {}                           Inserts content before content of <p> element
+
+::first-letter                 p::first-letter {}                     Selects first letter of every <p> element
+
+::first-line                   p::first-line {}                       Selects first line of every <p> element
+
+::placeholder                  input::placeholder {}                  Selects input elements with "placeholder" attribute specified
+
+::marker                       ::marker {}                            Selects markers in a list
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EFFECT
+   is a change that is a result or consequence of an action or other cause animations are a type of effect that has brought life like quality to web pages and today they are an all pervasive part of web development
+   animations are graphics in motion, transitioning over time.
+
+pros
+     highlight secialfeatures
+     improve aestetic
+
+cons
+   distract and drive users away
+   web page load slower
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TEXT EFFECTS 
+    
+
+Property                                          Values                                                       Description
+  
+Text-transform                None, uppercase, lowercase, capitalize, full-width                            Modify text properties
+
+Font-style                    Normal, italic, oblique                                                       Font styling options such as italics 
+
+Font-weight                   Normal, weight, lighter, bolder, 100-900                                      Other font styling options like change of emphasis such as making text bold
+
+Text-decoration               None, underline, overline, line-through                                       Shorthand for auxiliary elements added to text using other properties such as text-decoration-line
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Text-align                    For horizontal alignment of text
+
+Text-align-last               Alignment for the last line when text set to justify
+
+Text-combine-upright          Multiple characters into the space of a single character placed upright like in Mandarin
+
+Text-decoration-color         Color configuration of the text-decoration
+
+Text-decoration-line          Line type in text-decoration such as underline, overline and so on
+
+Text-decoration-style         Styles added to lines under text such as wavy, dotted and so on
+
+Text-decoration-thickness     Thickness of the decoration line
+
+Text-emphasis                 Shorthand for other properties such as color and style 
+
+Text-indent                   The indentation of the first line 
+
+Text-justify                  Specifies the justification method used when text-align is "justify"
+
+Text-orientation              Orientation of text in a line such as sideways, upright and so on
+
+Text-shadow                   Adds shadow to text?
+
+Text-underline-position       Declare position of underline set using the text-decoration property
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Property                     Values                                                            Description
+
+Text-overflow             Clip, ellipsis                                          Determines overflow behavior of text with the container
+
+Word-wrap                 Normal, anywhere, break-word                            Applies to inline elements, alias for overflow-wrap
+
+Word-break                Normal, break-all, keep-all, break-word                 Used for long words to decide if words should break or overflow
+
+Writing-mode              Horizontal-tb, vertical-lr, vertical-rl                 Can set the text direction vertical or horizontal
+
+
+
+CSS ANIMATION
+
+  @keyframes animantion_name{
+               keyframes-selector {css-styles;}
+                            }
+
+1. @keyframes animation-name{
+   from{color:red;}
+   to{color:blue;}
+}
+  
+    or
+
+2. @keyframes animation-name{
+   20%{color:red;}
+   50%{color:blue;}
+    70%{color:red;}
+   100%{color:blue;}
+}
+
+Animation property withdefaut values
+   animation-name: none 
+   animation-duration: 0s 
+   animation-timing-function: ease 
+   animation-delay: 0s 
+   animation-iteration-count: 1 
+   animation-direction: normal 
+   animation-fill-mode: none 
+   animation-play-state: running 
+   animation-timeline: auto 
+
+
+
+SASS and SCSS
+  SASS - Syntactically Awesome Style Sheets
+         is a scripting language that CSS compiles and interprets into CSS. 
+         "There are two syntaxes available for Sass. 
+                      The first, known as SCSS (Sassy CSS) and used throughout this reference, is an extension of the syntax of CSS. 
+                             This means that every valid CSS stylesheet is a valid SCSS file with the same meaning. 
+                              This syntax is enhanced with the Sass features described below. 
+                              Files using this syntax have the .scss extension.
+                      The second and older syntax, known as the indented syntax (or sometimes just �Sass�), provides a more concise way of writing CSS. It uses indentation rather than brackets to indicate the nesting of selectors and newlines rather than semicolons to separate properties. Files using this syntax have the .sass extension."
+
+SCSS - Sassy CSS is the syntax for SASS. advanced version of both SASS and CSS. 
+Example:
+   $font-stack: Arial; 
+   $primary-color: lightblue; 
+   body { 
+       font: 100% $font-stack; 
+       color: $primary-color; 
+        } 
+
+COMMON ERRORS:
+    The common errors that developers make can broadly be classified as 
+            skill-based - typos --> omitting delimiters at the end of the syntax, or some quotation marks while defining values and forgetting to close brackets.
+            rule-based, -- naming mistakes for ex: class name doesn't start with numeric value.s
+            knowledge-based.
+
+Debugging tools
+     viewing error logs, debugging JavaScript code, inspecting HTTP requests and responses, inspecting performance and memory usage of JavaScript code, inspecting CSS grid and flexbox layouts, inspecting HTML and CSS rendering, and live editing.
+     in website, ri8 click --> inspect --> htm code is open along with output.
+     helps time save to update and reload
+
+ Browser specificity 
+    media query in CSS is useful for browser specific.
+    The webkit main device pixel ratio, or webkit device pixel ratio is a media query rule which is used to specify the density of the schemes.
+     CSS libraries available to help ensure that your CSS rules are consistent across browsers, such as modernizer, reset.css, and normalized.css
+
+ UI TESTING
+   UI testing is a complex area with many techniques and strategies used by developers. The strategies you will use will often be determined by business priority, customer requirements, and project timelines
+   automated user acceptance testing, cross-device testing, and visual regression testing. 
+   1. cross-device testing:
+          Cross-device testing involves the manual or automated use of different devices to test the layout and behavior of an application. 
